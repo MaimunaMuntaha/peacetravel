@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Request a Quote — Peace Travel and Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <a href="/" class="brand">
+      <span class="brand-mark">✈</span>
+      <span>Peace Travel and Tours<small>ELMHURST · QUEENS, NY</small></span>
+    </a>
+    <div class="nav-links"><a href="/#services">Services</a><a href="/#contact">Contact</a></div>
+    <div class="nav-cta" id="nav-auth-slot"></div>
+  </div>
+</nav>
+
+<div class="dash-header">
+  <div class="container">
+    <h1 id="greeting">Let's plan your trip</h1>
+    <p>Choose flight or package, share your dates and destination, and we'll send you a price quote.</p>
+    <div class="type-toggle">
+      <button type="button" id="btn-flight" class="active">Flight</button>
+      <button type="button" id="btn-package">Package</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="booking-panel">
+    <h2 class="panel-title" id="panel-title">Flight request</h2>
+    <p class="panel-sub" id="panel-sub">Tell us where you're flying and when — we'll check current fares.</p>
+
+    <div class="form-msg" id="msg"></div>
+
+    <form id="booking-form">
+      <input type="hidden" id="type" value="flight" />
+
+      <div class="field-row">
+        <div class="field">
+          <label for="origin">Flying from</label>
+          <input type="text" id="origin" placeholder="e.g. New York (JFK)" />
+        </div>
+        <div class="field">
+          <label for="destination">Destination *</label>
+          <input type="text" id="destination" placeholder="e.g. Dhaka, Bangladesh" required />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="depart_date">Earliest departure date *</label>
+          <input type="date" id="depart_date" required />
+        </div>
+        <div class="field">
+          <label for="return_date">Latest return date <span style="color:var(--ink-faint);font-weight:400;">(if known)</span></label>
+          <input type="date" id="return_date" />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="trip_days">How many days is the trip?</label>
+          <input type="number" id="trip_days" min="1" placeholder="e.g. 14" />
+        </div>
+        <div class="field">
+          <label for="passengers">Number of passengers *</label>
+          <input type="number" id="passengers" min="1" max="50" value="1" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="travel_class">Class *</label>
+        <select id="travel_class" required>
+          <option value="economy">Economy</option>
+          <option value="premium_economy">Premium Economy</option>
+          <option value="business">Business</option>
+          <option value="first">First</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="notes">Anything else we should know? <span style="color:var(--ink-faint);font-weight:400;">(optional)</span></label>
+        <textarea id="notes" rows="3" placeholder="e.g. traveling with an infant, need visa help, flexible on dates…"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" id="submit-btn">Send request</button>
+      <p style="text-align:center;font-size:13px;color:var(--ink-faint);margin-top:12px;">We'll email you a confirmation, then follow up with pricing.</p>
+    </form>
+  </div>
+
+  <div class="requests-list">
+    <div class="section-head" style="margin-bottom:20px;">
+      <span class="eyebrow">Your history</span>
+      <h2 style="font-size:24px;">My requests</h2>
+    </div>
+    <div id="requests-container"></div>
+  </div>
+</div>
+
+<footer style="margin-top:60px;">
+  <div class="container" style="grid-template-columns:1fr;">
+    <div class="text-center">
+      <p>Peace Travel and Tours · 41-34, 75 Street, Suite 3A, Elmhurst, NY 11373 · 347-288-7042</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

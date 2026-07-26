@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Log in — Peace Travel and Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <a href="/" class="brand">
+      <span class="brand-mark">✈</span>
+      <span>Peace Travel and Tours<small>ELMHURST · QUEENS, NY</small></span>
+    </a>
+    <div class="nav-links"><a href="/#services">Services</a><a href="/#contact">Contact</a></div>
+    <div class="nav-cta" id="nav-auth-slot"></div>
+  </div>
+</nav>
+
+<div class="auth-shell">
+  <div class="auth-card">
+    <h1>Welcome back</h1>
+    <p class="sub">Log in to submit a request or check on your existing ones.</p>
+    <div class="form-msg" id="msg"></div>
+    <form id="login-form">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="submit-btn">Log in</button>
+    </form>
+    <div class="link-row">New here? <a href="/register.html">Create an account</a></div>
+  </div>
+</div>
+
+<script src="/js/main.js"></script>
+<script>
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('msg');
+  const btn = document.getElementById('submit-btn');
+  msg.classList.remove('show');
+  btn.disabled = true; btn.textContent = 'Logging in…';
+
+  const payload = {
+    email: document.getElementById('email').value.trim(),
+    password: document.getElementById('password').value,
+  };
+
+  try {
+    const { user } = await apiFetch('/api/auth/login', { method: 'POST', body: JSON.stringify(payload) });
+    window.location.href = user.role === 'admin' ? '/admin.html' : '/dashboard.html';
+  } catch (err) {
+    showMsg(msg, err.message, 'error');
+    btn.disabled = false; btn.textContent = 'Log in';
+  }
+});
+</script>
+</body>
+</html>

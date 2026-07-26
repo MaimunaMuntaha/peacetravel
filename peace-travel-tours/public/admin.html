@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin — Peace Travel and Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <a href="/" class="brand">
+      <span class="brand-mark">✈</span>
+      <span>Peace Travel and Tours<small>ADMIN DASHBOARD</small></span>
+    </a>
+    <div class="nav-links"></div>
+    <div class="nav-cta" id="nav-auth-slot"></div>
+  </div>
+</nav>
+
+<div class="dash-header" style="padding-bottom:40px;">
+  <div class="container">
+    <h1>Booking requests</h1>
+    <p>Everything customers have submitted through the website, newest first.</p>
+  </div>
+</div>
+
+<div class="container" style="margin-top:-24px;">
+  <div class="stat-row" id="stat-row"></div>
+
+  <div class="filter-bar">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="pending">Pending</button>
+    <button data-filter="quoted">Quoted</button>
+    <button data-filter="closed">Closed</button>
+  </div>
+
+  <div id="admin-list"></div>
+</div>
+
+<footer style="margin-top:60px;">
+  <div class="container" style="grid-template-columns:1fr;">
+    <div class="text-center"><p>Peace Travel and Tours · Admin view</p></div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>
